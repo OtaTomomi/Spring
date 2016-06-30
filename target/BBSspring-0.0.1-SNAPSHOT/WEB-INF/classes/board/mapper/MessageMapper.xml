@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.mapper.MessageMapper">
+<!--
+	<resultMap type="board.mapper.entity.Message" id="MessageResult">
+		<result column="id" property="id" />
+		<result column="subject" property="subject" />
+		<result column="text" property="text" />
+		<result column="category" property="category" />
+		<result column="update_date" property="updeteDate" />
+		<result column="user_id" property="userId" />
+		<result column="insert_date" property="insertDate" />
+	</resultMap>
+-->
+	<insert id="insertMessage">
+		insert into messages(subject,text,category,
+		update_date,user_id,insert_date)
+		values(#{subject},#{text},#{category},
+		CURRENT_TIMESTAMP,#{userId},CURRENT_TIMESTAMP)
+	</insert>
+</mapper>

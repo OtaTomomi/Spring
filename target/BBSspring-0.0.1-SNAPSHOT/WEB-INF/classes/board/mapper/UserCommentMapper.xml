@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.mapper.UserCommentMapper">
+	<resultMap type="board.entity.UserComment" id="UserCommentResult">
+		<result column="comment_id" property="commentId" />
+		<result column="message_id" property="messageId" />
+		<result column="comment_text" property="commentText" />
+		<result column="comment_insert_date" property="commentInsertDate" />
+		<result column="comment_name" property="commentName" />
+	</resultMap>
+	<select id="getUserCommentAll" resultMap="UserCommentResult">
+		select * from users_comments;
+	</select>
+</mapper>

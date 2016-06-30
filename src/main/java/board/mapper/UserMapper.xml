@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.mapper.UserMapper">
+	<resultMap type="board.entity.User" id="UserResult">
+		<result column="id" property="id" />
+		<result column="login_id" property="loginId" />
+		<result column="password" property="password" />
+		<result column="name" property="name" />
+		<result column="branch_id" property="branchId" />
+		<result column="position_id" property="positionId" />
+		<result column="useable" property="useable" />
+		<result column="insert_date" property="insertDate" />
+		<result column="update_date" property="updateDate" />
+		<result column="login_time" property="loginTime" />
+		<result column="logout_time" property="logoutTime" />
+	</resultMap>
+	<select id="getUserAll" resultMap="UserResult">
+		select * from users ;
+	</select>
+	<select id="getUser" resultMap="UserResult">
+		select * from users where id =
+		#{id}
+	</select>
+	<select id="getUserInfomation" resultMap="UserResult">
+		select * from users
+		where login_id = #{loginId}
+	</select>
+
+	<update id="editUser">
+		update users set login_id = #{loginId},password =
+		#{password},name =
+		#{name},branch_id = #{branchId},
+		position_id =
+		#{positionId}, update_date = CURRENT_TIMESTAMP where id = #{id};
+	</update>
+
+	<insert id="signupUser">
+		insert into users (login_id,password, name,
+		branch_id,position_id,useable,
+		insert_date,update_date)
+		values(#{loginId},#{password},#{name},#{branchId},#{positionId},"1",CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)
+	</insert>
+	<delete id="deleteUser">
+		delete from users where id = #{id}
+	</delete>
+	 <update id="insertLoginTime">
+		UPDATE bbs.users SET login_time = #{loginTime} where login_id = #{loginId}
+	</update>
+	<!-- <update id="insertLogoutTime">
+		UPDATE bbs.users SET logout_time =  CURRENT_TIMESTAMP where login_id = #{loginId}
+	</update> -->
+
+</mapper>

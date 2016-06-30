@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.mapper.UserMessageMapper">
+	<resultMap type="board.entity.UserMessage" id="UserMessageResult">
+		<result column="id" property="id" />
+		<result column="user_name" property="userName" />
+		<result column="subject" property="subject" />
+		<result column="text" property="text" />
+		<result column="category" property="category" />
+		<result column="insert_date" property="insertDate" />
+	</resultMap>
+	<select id="getUserMessageAll" resultMap="UserMessageResult">
+		select *
+		from users_messages order by insert_date desc;
+	</select>
+	<select id="getUserMessage" resultMap="UserMessageResult">
+	select * from users_messages where id = #{id}
+	</select>
+</mapper>

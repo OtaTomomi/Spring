@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.mapper.CommentMapper">
+<insert id="insertComment">
+insert into comments(message_id,text,update_date,user_id,insert_date)
+values(#{messageId},#{text},CURRENT_TIMESTAMP,#{userId},CURRENT_TIMESTAMP)
+</insert>
+<delete id="deleteComment">
+delete from comments where id = #{id}
+</delete>
+</mapper>
