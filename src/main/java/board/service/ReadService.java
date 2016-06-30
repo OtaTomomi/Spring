@@ -17,7 +17,10 @@ public class ReadService {
 		ReadDto newDto = new ReadDto();
 		Read entity = readMapper.readOrNot(dto);
 		BeanUtils.copyProperties(entity, newDto);
-		return newDto.getReadOrNot();
+		return newDto.getReadCheck();
+	}
+	public void alreadyRead(ReadDto readDto) {
+		readMapper.alreadyRead(readDto);
 	}
 
 }

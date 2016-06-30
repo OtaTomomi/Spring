@@ -2,7 +2,13 @@ package board.entity;
 
 public class Read {
 	private int userId;
-	private int readOrNot;
+	private int readCheck;
+	public int getReadCheck() {
+		return readCheck;
+	}
+	public void setReadCheck(int readCheck) {
+		this.readCheck = readCheck;
+	}
 	private int messageId;
 	public int getUserId() {
 		return userId;
@@ -10,12 +16,7 @@ public class Read {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public int getReadOrNot() {
-		return readOrNot;
-	}
-	public void setReadOrNot(int readOrNot) {
-		this.readOrNot = readOrNot;
-	}
+
 	public int getMessageId() {
 		return messageId;
 	}

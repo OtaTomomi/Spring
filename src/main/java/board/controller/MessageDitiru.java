@@ -71,22 +71,12 @@ public class MessageDitiru {
 		readDto.setUserId(loginUser.getId());
 		int readOrNot = readService.readOrNot(readDto);
 		if(readOrNot == 1){
-			System.out.println("実行A");
-
 			return "messageditiru";
 		}else{
-			System.out.println("実行B");
-
-			//readService.AlreadyRead(readDto);
+			readService.alreadyRead(readDto);
 			return "messageditiru";
-
 		}
-
-
-
-
 	}
-
 	@RequestMapping(value = "/home/detiru/{id}",method = RequestMethod.POST )
 	public String messageDitiru(@Valid @ModelAttribute CommentForm commentForm, BindingResult result,
 			 Model model, Principal principal){

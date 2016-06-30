@@ -5,9 +5,12 @@
 	<resultMap type="board.entity.Read" id="ReadResult">
 		<result column="user_id" property="userId" />
 		<result column="message_id" property="messageId" />
-		<result column="read_or_not" property="readOrNot" />
+		<result column="read_check" property="readCheck" />
 	</resultMap>
 	<select id="readOrNot" resultMap="ReadResult">
-	select exists(select * from reads where user_id = #{userId} and message_id = #{messageId}) as read_or_not
+	select exists(select * from bbs.reads where user_id = #{userId} and message_id = #{messageId}) as read_check
 	</select>
+	<insert id="alreadyRead">
+	insert into bbs.reads (user_id,message_id) values (#{userId},#{messageId})
+	</insert>
 </mapper>

@@ -3,7 +3,7 @@ package board.dto;
 public class ReadDto {
 private int userId;
 private int messageId;
-private int readOrNot;
+private int readCheck;
 public int getUserId() {
 	return userId;
 }
@@ -16,10 +16,11 @@ public int getMessageId() {
 public void setMessageId(int messageId) {
 	this.messageId = messageId;
 }
-public int getReadOrNot() {
-	return readOrNot;
+public int getReadCheck() {
+	return readCheck;
 }
-public void setReadOrNot(int readOrNot) {
-	this.readOrNot = readOrNot;
+public void setReadCheck(int readCheck) {
+	this.readCheck = readCheck;
 }
+
 }

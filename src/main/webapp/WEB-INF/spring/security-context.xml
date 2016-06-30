@@ -10,7 +10,8 @@
 		<!-- 認可の設定 -->
 		<intercept-url pattern="/home/"
 			access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
-		<intercept-url pattern="/home/post/" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+		<intercept-url pattern="/home/*/" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+		<intercept-url pattern="/home/*/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
 		<!--" hasAnyRole('ROLE_ADMIN','ROLE_USER')" -->
 		<intercept-url pattern="/user/" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/edituser/*" access="hasRole('ROLE_ADMIN')" />

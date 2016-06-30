@@ -18,6 +18,12 @@
 	<a href="${pageContext.request.contextPath}/user/signup/">ユーザー登録画面へ</a>
 	<br />
 	<h2>ユーザー一覧</h2>
+
+	<c:if test="${ not empty errorMessage  }">
+		<c:out value="${errorMessage }" />
+		<c:remove var="errorMessage" scope="session" />
+	</c:if>
+
 	<table border="1">
 
 		<tr>

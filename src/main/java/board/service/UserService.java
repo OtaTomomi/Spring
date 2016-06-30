@@ -51,9 +51,12 @@ public class UserService {
 		return resultList;
 	}
 	public void editUser(UserDto dto,String rawPassword) {
+
 		String password = passwordEncoder.encode(rawPassword);
 		dto.setPassword(password);
 		userMapper.editUser(dto);
+
+		//throw new RuntimeException();
 	}
 	public void signupUser(UserForm userForm,String rawPassword){
 		String password = passwordEncoder.encode(rawPassword);

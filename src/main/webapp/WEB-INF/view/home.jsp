@@ -170,21 +170,26 @@
 				<th>投稿時間</th>
 				<th>投稿者</th>
 				<th>カテゴリー</th>
-				<th>コメント数</th>
 			</tr>
 			<c:forEach items="${userMessages }" var="userMessage">
 				<tr>
-					<td><a
+					<td><c:forEach items="${ readLists }" var="readList">
+							<c:if test="${ readList.messageId == userMessage.id }">
+								<c:if test="${readList.readCheck == 0 }">
+									<font color="RED">NEW</font>
+								</c:if>
+							</c:if>
+
+
+						</c:forEach> <a
 						href="${pageContext.request.contextPath}/home/detiru/${userMessage.id}">
 							<c:out value="${userMessage.subject}" />
-					</a>
-					 <form:form modelAttribute="messageForm">
-					<c:if test="${loginUser.positionId == 2 }">
-						<input type="hidden" name="id" value="${userMessage.id }">
-						<input type="submit" value="投稿削除">
-					</c:if>
-				    </form:form>
-					</td>
+					</a> <form:form modelAttribute="messageForm">
+							<c:if test="${loginUser.positionId == 2 }">
+								<input type="hidden" name="id" value="${userMessage.id }">
+								<input type="submit" value="投稿削除">
+							</c:if>
+						</form:form></td>
 
 					<td>
 						<!-- <script>
@@ -194,7 +199,6 @@
 					</td>
 					<td><c:out value="${userMessage.userName}" /></td>
 					<td><c:out value="${ userMessage.category}" /></td>
-					<td>仮設</td>
 				</tr>
 			</c:forEach>
 

@@ -2,6 +2,7 @@ package board.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -51,7 +52,8 @@ public class EditUserController {
 	}
 
 	@RequestMapping(value = "/user/edituser/{id}",method = RequestMethod.POST)
-	public String editUser(@Valid @ModelAttribute UserForm userForm,BindingResult result, Model model,@PathVariable int id){
+	public String editUser(@Valid @ModelAttribute UserForm userForm,BindingResult result, Model model,@PathVariable int id,
+			HttpSession session){
 		if(result.hasErrors()){
 			UserDto user = userService.getUser(id);
 			model.addAttribute("message", user.getName() + "の編集");
@@ -63,10 +65,20 @@ public class EditUserController {
 			return "edituser";
 
 		} else {
-			UserDto dto = new UserDto();
-			BeanUtils.copyProperties(userForm, dto);
-			userService.editUser(dto,dto.getPassword());
+			try{
+				UserDto dto = new UserDto();
+				BeanUtils.copyProperties(userForm, dto);
+				userService.editUser(dto,dto.getPassword());
+
+			}catch(RuntimeException e){
+
+				session.setAttribute("errorMessage", "他の人によって更新されています。最新のデータを確認してください");
+
+
+			}
 			return "redirect:/user/";
+
+
 
 
 		}
